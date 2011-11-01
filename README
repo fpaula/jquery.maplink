@@ -1,0 +1,8 @@
+Pre-Requisite: Maplink JS API
+
+$('#mydiv').maplink({
+	latitude: -23.555117,
+	longitude: -46.6646338,
+	zoom: 16,
+	infoWindowHtml: '<span>my html</span>' 		
+});
