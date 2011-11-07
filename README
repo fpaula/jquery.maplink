@@ -1,8 +1,63 @@
-Pre-Requisite: Maplink JS API
+PRE-REQUISITE
 
+Maplink JS API
+
+
+OPTIONS
+
++============================================+
+| property       | data type | default value | 
++============================================+
+| latitude       | float     | -23.5505233   |
+| longitude      | float     | -46.6342982   |
+| zoom           | integer   | 10            |
+| infoWindowHtml | string    | ''            |
+| showMarker     | boolean   | true          |
+| markers        | array     | null          |
++============================================+
+
+
+MARKER STRUCTURE
+
+icon
+	image
+	dimentions
+		x
+		y
+html
+latitude
+longitude
+title
+type
+
+
+EXAMPLES
+
+Show map:
 $('#mydiv').maplink({
 	latitude: -23.555117,
 	longitude: -46.6646338,
 	zoom: 16,
 	infoWindowHtml: '<span>my html</span>' 		
+});
+
+Show map with markers:
+var myMarkersArray = [{
+	icon: {
+		image: 'restaurant_icon.png',
+		dimentions: {x: 18, y: 18}
+	},
+	html: '<span>All Taj Restaurant</span>',
+	latitude: '-23.5421413',
+	longitude: '-46.6834911',
+	title: 'All Taj',
+	type: 'Japanese Restaurant'
+}]
+
+$('#mydiv').maplink({
+	latitude: latitude,
+	longitude: longitude,
+	zoom: 11,
+	showMarker: false,
+	markers: myMarkersArray
 });
