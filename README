@@ -21,7 +21,7 @@ MARKER STRUCTURE
 
 icon
 	image
-	dimentions
+	dimensions
 		x
 		y
 html
@@ -45,7 +45,7 @@ Show map with markers:
 var myMarkersArray = [{
 	icon: {
 		image: 'restaurant_icon.png',
-		dimentions: {x: 18, y: 18}
+		dimensions: {x: 18, y: 18}
 	},
 	html: '<span>All Taj Restaurant</span>',
 	latitude: '-23.5421413',

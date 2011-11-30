@@ -32,7 +32,7 @@
 
                     var icon = new MIcon();
                     icon.image = config.markers[i].icon.image;
-                    icon.iconSize = new MSize(config.markers[i].icon.dimentions.x, config.markers[i].icon.dimentions.y);
+                    icon.iconSize = new MSize(config.markers[i].icon.dimensions.x, config.markers[i].icon.dimensions.y);
                     icon.infoWindowAnchor = new MIconPoint(5, 5);
 
                     var marker = new MMarker(point, icon);
