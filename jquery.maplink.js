@@ -1,6 +1,12 @@
 (function ($) {
+    var map = null;
+    $.fn.removeAllMarkers = function () {
+      map.removeAllMarkers();
+    };
+    $.fn.addMarker = function (marker) {
+      addMarker(marker);
+    };
     $.fn.maplink = function (settings) {
-        var map = null,
             config = {
                 latitude: -23.5505233,
                 longitude: -46.6342982,
@@ -28,23 +34,27 @@
             map.setCenter(new MPoint(config.longitude, config.latitude), config.zoom);
             if (config.markers !== null) {
                 for (var i in config.markers) {
-                    var point = new MPoint(config.markers[i].longitude, config.markers[i].latitude);
-
-                    var icon = new MIcon();
-                    icon.image = config.markers[i].icon.image;
-                    icon.iconSize = new MSize(config.markers[i].icon.dimensions.x, config.markers[i].icon.dimensions.y);
-                    icon.infoWindowAnchor = new MIconPoint(5, 5);
-
-                    var marker = new MMarker(point, icon);
-                    LBS.Event.addListener(marker, "click", function (i) {
-                        return function (e) {
-                            marker.openInfoWindowHtml(config.markers[i].html);
-                            LBS.Event.stop(e);
-                        }
-                    }(i));
-                    map.addMarker(marker);
+                  addMarker(config.markers[i]);
                 }
             }
         });
     };
+
+    addMarker = function (marker) {
+      var point = new MPoint(marker.longitude, marker.latitude);
+
+      var icon = new MIcon();
+      icon.image = marker.icon.image;
+      icon.iconSize = new MSize(marker.icon.dimensions.x, marker.icon.dimensions.y);
+      icon.infoWindowAnchor = new MIconPoint(5, 5);
+
+      var mmarker = new MMarker(point, icon);
+      LBS.Event.addListener(mmarker, "click", function (i) {
+          return function (e) {
+              mmarker.openInfoWindowHtml(marker.html);
+              LBS.Event.stop(e);
+          }
+      });
+      map.addMarker(mmarker);
+    }
 }(jQuery));

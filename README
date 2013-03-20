@@ -6,7 +6,7 @@ Maplink JS API
 OPTIONS
 
 +============================================+
-| property       | data type | default value | 
+| property       | data type | default value |
 +============================================+
 | latitude       | float     | -23.5505233   |
 | longitude      | float     | -46.6342982   |
@@ -15,6 +15,11 @@ OPTIONS
 | showMarker     | boolean   | true          |
 | markers        | array     | null          |
 +============================================+
+
+OTHER METHODS
+
+$('#mydiv').addMarker(marker)
+$('#mydiv').removeAllMarkers()
 
 
 MARKER STRUCTURE
@@ -38,7 +43,7 @@ $('#mydiv').maplink({
 	latitude: -23.555117,
 	longitude: -46.6646338,
 	zoom: 16,
-	infoWindowHtml: '<span>my html</span>' 		
+	infoWindowHtml: '<span>my html</span>'
 });
 
 Show map with markers:
