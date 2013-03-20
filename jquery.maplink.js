@@ -49,11 +49,9 @@
       icon.infoWindowAnchor = new MIconPoint(5, 5);
 
       var mmarker = new MMarker(point, icon);
-      LBS.Event.addListener(mmarker, "click", function (i) {
-          return function (e) {
-              mmarker.openInfoWindowHtml(marker.html);
-              LBS.Event.stop(e);
-          }
+      LBS.Event.addListener(mmarker, "click", function (e) {
+        mmarker.openInfoWindowHtml(marker.html);
+        LBS.Event.stop(e);
       });
       map.addMarker(mmarker);
     }
