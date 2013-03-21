@@ -25,10 +25,7 @@
             map.addControl(new GLargeMapControl());
             if (config.showMarker === true) {
                 var marker = new MMarker(new MPoint(config.longitude, config.latitude));
-                LBS.Event.addListener(marker, "click", function (e) {
-                    marker.openInfoWindowHtml(config.infoWindowHtml);
-                    LBS.Event.stop(e);
-                });
+                addMarkerListener(marker, config.infoWindowHtml)
                 map.addMarker(marker);
             }
             map.setCenter(new MPoint(config.longitude, config.latitude), config.zoom);
@@ -49,10 +46,14 @@
       icon.infoWindowAnchor = new MIconPoint(5, 5);
 
       var mmarker = new MMarker(point, icon);
-      LBS.Event.addListener(mmarker, "click", function (e) {
-        mmarker.openInfoWindowHtml(marker.html);
-        LBS.Event.stop(e);
-      });
+      addMarkerListener(mmarker, marker.html)
       map.addMarker(mmarker);
+    };
+
+    addMarkerListener = function (marker, html) {
+      LBS.Event.addListener(marker, "click", function (e) {
+          marker.openInfoWindowHtml(html);
+          LBS.Event.stop(e);
+      });
     }
 }(jQuery));
