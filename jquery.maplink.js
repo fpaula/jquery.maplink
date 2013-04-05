@@ -6,6 +6,14 @@
     $.fn.addMarker = function (marker) {
       addMarker(marker);
     };
+
+    $.fn.addListener = function (eventName, callback) {
+      LBS.Event.addListener(map, eventName, function (e) {
+          callback(this);
+          LBS.Event.stop(e);
+      });
+    };
+
     $.fn.maplink = function (settings) {
             config = {
                 latitude: -23.5505233,
